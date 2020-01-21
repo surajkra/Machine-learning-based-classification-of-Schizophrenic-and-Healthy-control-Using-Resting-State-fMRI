@@ -1,4 +1,4 @@
-# Automatic Classification of Schizophrenic & Healthy controls using Resting state Network fMRI
+#  Machine learning based classification of Schizophrenic and Healthy control Using Resting State fMRI features
 
 
 #### Objective:
