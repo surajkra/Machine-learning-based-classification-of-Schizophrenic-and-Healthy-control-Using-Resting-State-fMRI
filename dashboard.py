@@ -221,18 +221,17 @@ store = get_store()
 
 st.title("Dashboard")
 
+left_col, right_col = st.columns(2)
+with left_col:
+    lcc_chart = st.empty()
+    rg_chart = st.empty()
+with right_col:
+    temp_pressure_chart = st.empty()
+    ped_chart = st.empty()
 
-@st.fragment(run_every=1)
-def live_charts() -> None:
+while True:
     snap = store.snapshot()
-
-    left_col, right_col = st.columns(2)
-    with left_col:
-        st.plotly_chart(build_lcc_fig(snap), use_container_width=True, key="lcc_chart")
-        st.plotly_chart(build_rg_fig(snap), use_container_width=True, key="rg_chart")
-    with right_col:
-        st.plotly_chart(build_temp_pressure_fig(snap), use_container_width=True, key="temp_pressure_chart")
-        st.plotly_chart(build_ped_fig(snap), use_container_width=True, key="ped_chart")
-
-
-live_charts()
+    lcc_chart.plotly_chart(build_lcc_fig(snap), use_container_width=True)
+    rg_chart.plotly_chart(build_rg_fig(snap), use_container_width=True)
+    temp_pressure_chart.plotly_chart(build_temp_pressure_fig(snap), use_container_width=True)
+    ped_chart.plotly_chart(build_ped_fig(snap), use_container_width=True)
